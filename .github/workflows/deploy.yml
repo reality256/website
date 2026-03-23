@@ -27,12 +27,11 @@ jobs:
         run: hugo --minify
 
       - name: Deploy to Server
-        uses: burnett01/rsync-deployments@v8
+        uses: easingthemes/ssh-deploy@v5
         with:
-          switches: -avzr --delete
-          path: public/
-          remote_path: ${{ secrets.REMOTE_TARGET }}
-          remote_host: ${{ secrets.SERVER_IP }}
-          remote_port: ${{ secrets.REMOTE_PORT }}
-          remote_user: ${{ secrets.SERVER_USER }}
-          remote_key: ${{ secrets.SERVER_SSH_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.SERVER_IP }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
+          SOURCE: "public/"
+          ARGS: "-avzr --delete"
