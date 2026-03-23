@@ -1,0 +1,27 @@
+[goldmark]
+    [goldmark.extensions]
+        [goldmark.extensions.passthrough]
+            enable = true
+
+            [goldmark.extensions.passthrough.delimiters]
+                block  = [["\\[", "\\]"], ["$$", "$$"]]
+                inline = [["\\(", "\\)"]]
+
+    [goldmark.renderer]
+        ## Set to true if you have HTML content inside Markdown
+        unsafe = true
+        hardLineBreak = true
+
+[tableOfContents]
+    endLevel   = 4
+    ordered    = true
+    startLevel = 1
+
+[highlight]
+    noClasses          = false
+    codeFences         = true
+    guessSyntax        = true
+    lineNoStart        = 1
+    lineNos            = true
+    lineNumbersInTable = true
+    tabWidth           = 4

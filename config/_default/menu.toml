@@ -1,0 +1,28 @@
+[[social]]
+    identifier = "bilibili"
+    name       = "Bilibili"
+    url        = "https://space.bilibili.com/245079755"
+
+    [social.params]
+        icon = "brand-bilibili"
+        newTab     = true
+
+[[social]]
+    identifier = "github"
+    name       = "GitHub"
+    url        = "https://github.com/reality256"
+
+    [social.params]
+        icon = "brand-github2"
+        newTab     = true
+
+[[social]]
+    identifier = "xhs"
+    name       = "小红书"
+    url        = "https://www.xiaohongshu.com/user/profile/5fa633ae0000000001002fa0"
+
+    [social.params]
+        icon = "brand-xhs2"
+        newTab     = true
+
+
