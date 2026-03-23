@@ -35,3 +35,5 @@ jobs:
           TARGET: ${{ secrets.REMOTE_TARGET }}
           SOURCE: "public/"
           ARGS: "-avzr --delete"
+
+
