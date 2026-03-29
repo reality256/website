@@ -32,7 +32,7 @@ Already, we can build a simple burglar alarm.
 
 LED turns on if ((Door 1 is open) OR (Door 2 is open)) AND (Alarm is armed))
 
-![image-20260328141504816](assets/image-20260328141504816.png)
+![](assets/image-20260328141504816.png)
 
 The most common logic gates are:
 
@@ -66,7 +66,7 @@ Field Programmable Gate Array
 
 ### Decompose Circuit: Internal vs External to FPGA
 
-![image-20260328142216745](assets/image-20260328142216745.png)
+![](assets/image-20260328142216745.png)
 
 ### Quartus
 
@@ -101,7 +101,7 @@ Basic logic gates: `& = AND, | = OR, ^ = XOR, ! = NOT`
 
 ### Pull-up & Pull-down Resistors
 
-![Basics](assets/pull_up_down.png)
+[](assets/pull_up_down.png)
 
 | Switch Position | Output PU | Output PD |
 | :-------------: | :-------: | :-------: |
@@ -138,7 +138,7 @@ Other Logic Gates
 |  1   |  0   |  0   |  1   |  1   |  0   |  1   |
 |  1   |  1   |  1   |  1   |  0   |  0   |  0   |
 
-![image-20260328144013135](assets/image-20260328144013135.png)
+![](assets/image-20260328144013135.png)
 
 In the graph, the bubble inverts the signal.
 
@@ -307,7 +307,7 @@ Two signals, A and B
 - At time 5, B becomes 1
 - At time 6, B becomes 0 and A becomes 1
 
-![4c9abe0b3326fd463bf32a02a7c122f2](assets/4c9abe0b3326fd463bf32a02a7c122f2.jpg)
+[](assets/4c9abe0b3326fd463bf32a02a7c122f2.jpg)
 
 Exercise 2
 
@@ -320,11 +320,11 @@ Exercise 3
 
 ### Shift Register
 
-![image-20260328213117711](assets/image-20260328213117711.png)
+![](assets/image-20260328213117711.png)
 
 A timing diagram of a shift register is like this: 
 
-![d1cc9ae71052d89d558a855df1c94c3d](assets/d1cc9ae71052d89d558a855df1c94c3d.jpg)
+![](assets/d1cc9ae71052d89d558a855df1c94c3d.jpg)
 
 'Photographs' are taken before the rising edge.
 
@@ -405,7 +405,7 @@ module Simple;
 endmodule
 ```
 
-![09db067ce1ff1e1d91c464078923bac6](assets/09db067ce1ff1e1d91c464078923bac6.jpg)
+![](assets/09db067ce1ff1e1d91c464078923bac6.jpg)
 
 ### Using a Repeat Statement
 
@@ -808,7 +808,7 @@ We look at NS[0] and NS[1] separately
 
 We can draw the main body of our counter now
 
-![image-20260329145043697](assets/image-20260329145043697.png)
+![](assets/image-20260329145043697.png)
 
 ### Hardware for Next State Logic (one-hot encoding)
 
