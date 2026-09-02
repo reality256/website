@@ -9,6 +9,7 @@ categories:
 tags:  
     - 交换
 image: ds.png
+isCJKLanguage: false
 ---  
 
 # Getting Started

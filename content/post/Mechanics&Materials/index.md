@@ -9,6 +9,7 @@ categories:
 tags:  
     - 交换
 image: mm.png
+isCJKLanguage: false
 ---  
 
 # Lecture 1 Mechanics and Continuum Mechanics
