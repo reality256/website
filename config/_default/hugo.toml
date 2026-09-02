@@ -1,4 +1,4 @@
-baseURL                = "http://lijiaming.cc/"
+baseURL                = "https://lijiaming.cc/"
 languageCode           = "zh-cn"
 title                  = "李嘉铭的小站"
 theme = "hugo-theme-stack-4.0.0-beta.14"
