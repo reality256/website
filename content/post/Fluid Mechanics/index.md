@@ -529,3 +529,170 @@ $$
 =\operatorname{div}\boldsymbol P
 =\frac{\partial p_{k i_2\cdots i_n}}{\partial x_k}
 $$
+
+# 流体的物理性质和运动的描述
+
+## 流体的物理性质
+
+### 连续介质假设
+
+如果从微观入手，
+
+$$
+\frac{F_i}{m}=\frac{\mathrm{d}u_i}{\mathrm{d}t}
+$$
+
+但统计结果难以反映宏观力学性质，因此目前研究宏观运动一般都借助宏观方法。
+
+设某一时刻，在流体中取一立方体，当立方体体积 $V$ 或其边长 $a$ 向一点趋于零时，就得到流体中该点处单位体积的平均质量即平均密度值 $\bar{\rho}$ 的变化过程
+
+$$
+\bar{\rho}=\frac{\sum m_i N_i}{V}
+$$
+
+![平均密度随a的变化](assets/image-20261010145708636.png)
+
+其中$l$为粒子结构尺度$(\sim 10^{-9}\mathrm m)$，$L$为宏观密度显著变化的尺度$(>10^{-5}\mathrm m)$
+
+为满足统计平均，我们一般取$l\ll a \ll L$，此时我们定义克努森数（Knudsen Number）
+
+$$
+Kn=\frac{l}{a}\ll 1
+$$
+
+连续介质力学：忽略物质的微观分子结构，将流体视为连续充满空间的介质，其密度、速度、压强、温度等宏观物理量都是空间和时间的连续函数。
+
+流体质点（流体微团）是包含大量分子的微小流体单元。有两个特点：
+
+- 微观足够大： 包含大量分子，可以得到稳定的统计平均物理量。
+
+- 宏观足够小： 相对于流场的特征尺度足够小，可以认为其内部宏观物理量近似均匀。
+
+不满足连续介质的例子：
+
+1. 高空稀薄气体，分子自由程达厘米量级，$Kn\gg 1$
+
+2. 芯片微通道流动，“宏观”尺度至微米甚至纳米尺度，$Kn\gg 1$
+
+### 流体的可压缩性和热膨胀性
+
+密度定义为
+
+$$
+\rho=\lim_{\delta V\to \delta V^*}\frac{\delta m}{\delta V}
+$$
+
+对密度$\rho=\rho(T,p)$做全微分可得
+
+$$
+\mathrm d\rho = \frac{\partial \rho}{\partial p} \mathrm dp + \frac{\partial \rho}{\partial T} \mathrm dT
+$$
+
+$$
+\frac{\mathrm d\rho}{\rho}=\gamma_T \mathrm dp-\beta\mathrm dT
+$$
+
+等温压缩系数
+$$
+\gamma_T=\frac{1}{\rho}\left(\frac{\partial\rho}{\partial p}\right)_T
+$$
+等温热膨胀系数
+$$
+\beta=-\frac{1}{\rho}\left(\frac{\partial\rho}{\partial T}\right)_p
+$$
+
+对于理想气体我们有
+$$
+\rho = \frac{p}{RT},\gamma_T=\frac{1}{p},\beta = \frac{1}{T}
+$$
+
+可压缩性讨论：
+
+在压强变化较小时，可以近似写成：
+$$
+\gamma_T\approx\frac{1}{\rho}\frac{\Delta\rho}{\Delta p}
+$$
+
+整理得到：
+$$
+\frac{\Delta\rho}{\rho}\approx\gamma_T\Delta p
+$$
+
+因此只要$\gamma_T|\Delta p|\ll1$，密度的相对变化就很小，可以认为密度近似不变。
+
+若$\gamma_T$或$\Delta p$ 很小， 则流体近似不可压。
+
+- $\gamma_T$很小——液体
+- $\Delta p$ 很小——压强变化较小的流动
+
+$$
+\Delta p=\frac{1}{2}\rho(v_2^2-v_1^2)
+$$
+- 理想气体，有$\gamma_T=\dfrac{1}{p}$，于是理想气体的等温不可压缩近似条件就是：
+$$
+\frac{|\Delta p|}{p}\ll1
+$$
+
+### 流体的输运性质
+
+三类物理量输运过程：
+1. 质量：不同密度（浓度）
+2. 动量：不同速度
+3. 能量：不同温度
+
+牛顿粘性定律：
+$$
+F=\mu\frac{v}{h}A,\tau=\frac{F}{A}=\mu\frac{v}{h}
+$$
+
+若有速度分布$u(y)$，则流体层$y$处的剪切力为
+$$
+\tau=\mu\frac{\mathrm du}{\mathrm dy}
+$$
+
+其中的系数$\mu$为动力粘度（Dynamic Viscosity），单位为$\text{Pa}\cdot\text{s}=\text{kg}\cdot \text{m}^{-1}\cdot\text{s}^{-1}$
+
+还有一种粘度的定义：运动粘度（Kinematic Viscosity）
+$$
+\nu = \frac{\mu}{\rho}
+$$
+
+剪切应力与应变的一维本构关系：
+
+$$
+\tau=\mu\frac{\mathrm du}{\mathrm dy}=\mu\frac{\mathrm d}{\mathrm dy}\left(\frac{\mathrm dx}{\mathrm dt}\right)=\mu\frac{\mathrm d}{\mathrm dt}\left(\frac{\mathrm dx}{\mathrm dy}\right)=\mu\dot{\gamma}
+$$
+![](assets/image-20261010160742496.png)
+
+思考：为何任意大小的剪切力都能使流体变形？
+
+$$
+\tau\neq 0\Rightarrow\dot{\gamma}\neq 0
+$$
+
+如果给定$\tau$，$\mu$增大则$\dot{\gamma}$减小
+## 描述流体运动的方法
+
+### 拉格朗日描述（随体法）
+
+### 欧拉描述（空间法）
+
+### 拉格朗日和欧拉描述的相互转换关系
+
+### 随体导数（物质导数、质点导数）
+
+## 迹线、流线、时间线及脉线
+
+### 迹线
+
+### 流线
+
+### 时间线
+
+### 脉线/烟线/染色线
+
+## 流场中一点邻域的相对运动分析
+
+## 作用于流体上的力
+
+## 本构方程
