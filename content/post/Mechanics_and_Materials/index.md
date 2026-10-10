@@ -3,7 +3,7 @@ title: 《力学与材料》课程笔记
 date: 2026-04-13
 description: 墨尔本大学机械工程系-2026第一学期  
 math: true  
-slug: mechanics&materials
+slug: mechanics_and_materials
 categories:  
     - university  
 tags:  

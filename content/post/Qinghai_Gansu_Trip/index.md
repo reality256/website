@@ -3,14 +3,17 @@ title: 青甘大环线路书
 date: 2026-08-01  
 description: 2026年暑假青甘大环线自驾路书
 math: false
-categories:   
-tags:   
-image: 
-slug: qinghaigansu_trip
+categories:
+  - travel
+tags:    
+  - 青甘大环线
+  - 自驾
+image: images/jingfan.jpg
+
+slug: qinghai_gansu_trip
 ---  
 
-[下载 PDF](202608青甘大环线路书.pdf)
-
+网页带宽较低，加载文件可能需要数秒时间。
 <iframe
   src="202608青甘大环线路书.pdf"
   width="100%"
