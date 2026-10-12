@@ -675,24 +675,897 @@ $$
 
 ### 拉格朗日描述（随体法）
 
+
+为了识别运动流体中的一个质点，以一组$(a,b,c)$作为其标记。这组数称为：拉格朗日坐标（Lagrange coordinates）
+
+它通常可以用质点初始时刻 $t=t_0$ 的位置坐标：
+
+$$
+(x_0,y_0,z_0)
+$$
+
+来表示。
+
+流体质点无论运动到哪里，其拉格朗日坐标：均不随时间改变。
+
+拉格朗日描述跟随流体质点，表示其物理量随该点坐标和时间变化（速度、密度、压力等）
+
+若以$f$表示流体质点的某一物理量，拉格朗日描述的数学表达是
+
+$$
+f=f(a,b,c,t)
+$$
+
+在时刻 $t$ 该质点矢径的拉格朗日表示为：
+
+$$
+\boldsymbol{r}(a,b,c,t)
+$$
+
+或
+
+$$
+x_i=x_i(a,b,c,t),\quad i=1,2,3
+$$
+
+速度表示为：
+
+$$
+\boldsymbol{v}(a,b,c,t)=
+\lim_{\Delta t\to0}
+\frac{\boldsymbol{r}(a,b,c,t+\Delta t)-\boldsymbol{r}(a,b,c,t)}
+{\Delta t}=
+\frac{\partial \boldsymbol{r}}{\partial t}
+$$
+
+分量形式：
+
+$$
+v_i=\frac{\partial x_i}{\partial t},
+\quad i=1,2,3
+$$
+
+加速度同理
+
+$$
+\boldsymbol{a}(a,b,c,t)=
+\frac{\partial \boldsymbol{v}}{\partial t}=
+\frac{\partial^2\boldsymbol{r}}{\partial t^2}
+$$
+
+
 ### 欧拉描述（空间法）
 
+为了表示流体质点在不同时刻运动到空间的一个位置，我们以一固定于空间的坐标系的一组坐标$(q_1,q_2,q_3)$来表示该位置，由于根据连续性假设，流体质点是连续地布满流体所占空间的，因此可以认为流体质点与空间点从而也与一组坐标是一一对应的，我们称这组坐标为欧拉（Euler）坐标。
+
+若以 $f$ 表示流体的一个物理量，其欧拉描述的数学表达是（设空间坐标取用直角坐标）
+
+$$
+f=F(x,y,z,t)=F(\boldsymbol{r},t)
+$$
+
+例如，流体速度的欧拉描述是
+
+$$
+\boldsymbol{v}=\boldsymbol{v}(x,y,z,t)
+$$
+
+或
+
+$$
+v_i=v_i(x,y,z,t),\quad i=1,2,3
+$$
+
+或
+
+$$
+u=u(x,y,z,t)
+$$
+
+$$
+v=v(x,y,z,t)
+$$
+
+$$
+w=w(x,y,z,t)
+$$
+
+它表示在空间点 $(x,y,z)$ 上在时刻 $t$ 的流体速度。
+
+自然，这个速度是某一流体质点的。不过，这里并未显示出这一速度是属于哪个质点的，知道的只是，在时刻 $t$ 运动到空间点 $(x,y,z)$ 的那个流体质点有速度 $\boldsymbol{v}(x,y,z,t)$。
 ### 拉格朗日和欧拉描述的相互转换关系
 
+- **拉格朗日**：质点，物理量为随体坐标和时间的函数
+  - 描述对象：**精确、有限个质点**
+
+  - $f(a,b,c,t)$表示：质点 $P$ 在 $t$ 时刻，位于 $(a,b,c)$ 的物理量 $f$。
+
+- **欧拉**：空间点，物理量为空间坐标和时间的函数
+  - 描述对象：**有限格点 $\rightarrow$ 所有质点**
+  - $f(x,y,z,t)$表示：空间点 $M(x,y,z)$ 在 $t$ 时刻的物理量 $f$。
+
+若已知拉格朗日描述：
+
+$$
+\boldsymbol{r}=\boldsymbol{r}(a,b,c,t),\quad f=f(a,b,c,t)
+$$
+
+则可反解得随体坐标 $(a,b,c)$ 对应的空间坐标，便可得欧拉描述：
+
+$$
+f=f[a(x,y,z,t),b(x,y,z,t),c(x,y,z,t),t]
+$$
+
+即：
+
+$$
+f=F(x,y,z,t)
+$$
+
+
+若已知欧拉描述：
+
+$$
+\boldsymbol{v}=\boldsymbol{v}(x,y,z,t),\quad f=F(x,y,z,t)
+$$
+
+其中：
+
+$$
+\begin{cases}
+u(x,y,z,t)=\dfrac{dx}{dt}\\
+v(x,y,z,t)=\dfrac{dy}{dt}\\
+w(x,y,z,t)=\dfrac{dz}{dt}
+\end{cases}
+$$
+
+
+对时间积分得：
+
+$$
+\boldsymbol{r}=\boldsymbol{r}(c_1,c_2,c_3,t)
+$$
+
+其中：
+
+$$
+\begin{cases}
+x=x(c_1,c_2,c_3,t)\\
+y=y(c_1,c_2,c_3,t)\\
+z=z(c_1,c_2,c_3,t)
+\end{cases}
+$$
+
+
+再由初始条件：
+
+$$
+t=t_0\text{时}\quad \boldsymbol{r}(a,b,c)\Rightarrow c_i(a,b,c,t_0)
+$$
+
+代回可得：
+
+$$
+\boldsymbol{r}(a,b,c,t)
+$$
+
+
+代入上式得质点矢径函数：
+
+$$
+f=F[x(a,b,c,t),y(a,b,c,t),z(a,b,c,t)]=f(a,b,c,t)
+$$
+
+例：已知速度分布为：
+
+$$
+\begin{cases}
+u=x+t\\
+v=y+t
+\end{cases}
+$$
+
+质点原点 $A$ 在 $t=0$ 时位于 $(a,b)$ 点。求该质点的运动轨迹及其速度函数。
+
+
+解：（欧拉 $\rightarrow$ 拉格朗日）
+
+
+由速度定义：
+
+$$
+u=\frac{dx}{dt}=x+t
+$$
+
+积分得：
+
+$$
+x=c_1e^t-t-1
+$$
+
+
+同理：
+
+$$
+v=\frac{dy}{dt}=y+t
+$$
+
+积分得：
+
+$$
+y=c_2e^t-t-1
+$$
+
+
+由初始条件：
+
+当 $t=0$ 时：
+
+$$
+x=a,\quad y=b
+$$
+
+代入：
+
+$$
+a=c_1-1
+$$
+
+$$
+b=c_2-1
+$$
+
+所以：
+
+$$
+c_1=a+1,\quad c_2=b+1
+$$
+
+
+得到质点运动轨迹：
+
+$$
+\begin{cases}
+x=(a+1)e^t-t-1\\
+y=(b+1)e^t-t-1
+\end{cases}
+$$
+
+
+速度函数：
+
+$$
+\begin{cases}
+u=(a+1)e^t-1\\
+v=(b+1)e^t-1
+\end{cases}
+$$
 ### 随体导数（物质导数、质点导数）
+
+按拉格朗日描述，直接求导就是随体导数。
+
+按欧拉描述，直接求导表示物理量在空间点$(x,y,z)$上的时间变化率，并不是随体导数。
+
+$$
+\frac{DF(x,y,z,t)}{Dt}= \frac{D}{Dt}F[x(a,b,c,t),y(a,b,c,t),z(a,b,c,t),t]
+$$
+
+$$
+= \frac{\partial F}{\partial x}\frac{\partial x}{\partial t}+ \frac{\partial F}{\partial y}\frac{\partial y}{\partial t}+ \frac{\partial F}{\partial z}\frac{\partial z}{\partial t}+ \frac{\partial F}{\partial t}
+$$
+
+$$
+= \frac{\partial F}{\partial x}u+ \frac{\partial F}{\partial y}v+ \frac{\partial F}{\partial z}w+ \frac{\partial F}{\partial t}
+$$
+
+$$
+= (\boldsymbol{v}\cdot\nabla)F+\frac{\partial F}{\partial t}
+$$
+
+$$
+\frac{D}{Dt}=
+\frac{\partial}{\partial t}+
+(\boldsymbol{v}\cdot\nabla)
+$$
+
+例：已知拉格朗日描述
+\[
+u=1+b,\quad v=1+2ct,\quad w=a-b
+\]
+
+求：
+
+（1）$t=1$时流体质点的分布规律；
+
+（2）$(a,b,c)=(1,1,1)$质点的运动；
+
+（3）质点加速度及其表达式。
+
+（其中 $x,y,z$ 是由 $a,b,c$ 确定的，$t=0$ 时 $(x,y,z)=(a,b,c)$）
+
+
+（1）
+
+由速度定义：
+
+$$
+u=\frac{dx}{dt}=1+b
+$$
+
+$$
+v=\frac{dy}{dt}=2ct
+$$
+
+$$
+w=\frac{dz}{dt}=a-b
+$$
+
+积分得：
+
+$$
+\begin{cases}
+x=(1+b)t+C_1\\
+y=ct^2+C_2\\
+z=(a-b)t+C_3
+\end{cases}
+$$
+
+由初始条件 $t=0$ 时：
+
+$$
+(x,y,z)=(a,b,c)
+$$
+
+得到：
+
+$$
+\begin{cases}
+x=(1+b)t+a\\
+y=ct^2+b\\
+z=(a-b)t+c
+\end{cases}
+$$
+
+当 $t=1$ 时：
+
+$$
+\begin{cases}
+x=1+a+b\\
+y=b+c\\
+z=a-b+c
+\end{cases}
+$$
+
+
+（2）
+
+当：
+
+$$
+(a,b,c)=(1,1,1)
+$$
+
+代入运动方程：
+
+$$
+\begin{cases}
+x=2t+1\\
+y=t^2+1\\
+z=1
+\end{cases}
+$$
+
+
+（3）
+
+求导得加速度：
+
+$$
+a_x=0
+$$
+
+$$
+a_y=2c
+$$
+
+$$
+a_z=0
+$$
+
+可以求出
+$$
+a_y=
+\frac{-2t x+2t(t+1)y+2z+2t^2}
+{1+t^3+t^4}
+$$
 
 ## 迹线、流线、时间线及脉线
 
 ### 迹线
 
+流体质点的迹线就是流体质点运动的轨迹，也就是该流体质点在不同时刻的运动位置的联线。
+
+流体力学中通常采用欧拉描述，这时可以写出整齐的形式：
+
+$$
+\frac{dx}{u(x,y,z,t)}
+=\frac{dy}{v(x,y,z,t)}
+=\frac{dz}{w(x,y,z,t)}
+=dt
+$$
+
 ### 流线
+
+流线是用来描述流场中各点流动方向的曲线。它是某时刻速度场中的一条矢量线，即在线上任一点的切线方向与该点在该时刻的速度矢量方向一致。
+
+在一流线上取一段弧元素 $\delta r$，由流线定义，应有
+
+$$
+\delta \boldsymbol{r}\times \boldsymbol{v}=0.
+$$
+
+在直角坐标系中，这方程就是
+
+$$
+\frac{\delta x}{u(x,y,z,t_0)}
+=\frac{\delta y}{v(x,y,z,t_0)}
+=\frac{\delta z}{w(x,y,z,t_0)}
+$$
+
+- 迹线：针对流场某质点，拉格朗日描述的天然几何呈现
+- 流线：针对流场某时刻，欧拉描述的天然几何呈现
+
+对于定常流动（速度等物理场不随时间变化），两者重合
 
 ### 时间线
 
+时间线是某时刻$t_0$在流场中任意取的一条线，该线上的每个流体质点在$t$时刻运动到新的位置上的连线，也常称流体线。
+
+![时间线](assets/image-20261012125642411.png)
+
 ### 脉线/烟线/染色线
 
+脉线是在一段时间内，将相继经过某一空间固定点的流体质点，在某一瞬时（即观察瞬时）连成的曲线。
+
+| 名称 | 关注对象 | 数学来源 |
+|:-:|:-:|:-:|
+| 迹线 | 一个质点 | 拉格朗日描述 |
+| 流线 | 一个瞬间的速度场 | 欧拉描述 |
+| 时间线 | 一群初始相邻质点 | 运动变形 |
+| 脉线 | 不同时刻释放的质点 | 释放历史 |
 ## 流场中一点邻域的相对运动分析
+
+### 速度分解
+
+对于刚体，我们可以将速度分解为平动和转动。
+
+对于流体，我们有Helmholtz速度分解定理：—流场中微团上任一点的运动可分解为平动、转动和变形三部分之和
+
+在 $r_0$ 处泰勒展开：
+
+$$
+\boldsymbol{v}(r_0+\delta r)=\boldsymbol{v}_0+(\delta \boldsymbol{r}\cdot\nabla)\boldsymbol{v}=\boldsymbol{v}_0+\frac{\partial \boldsymbol{v}}{\partial x}\delta x
++\frac{\partial \boldsymbol{v}}{\partial y}\delta y
++\frac{\partial \boldsymbol{v}}{\partial z}\delta z
+$$
+
+$$
+u_i=u_{i,0}+\frac{\partial u_i}{\partial x_j}\delta x_j
+$$
+
+张量分解：
+
+$$
+\frac{\partial u_i}{\partial x_j}=
+\frac{1}{2}
+\left(
+\frac{\partial u_i}{\partial x_j}+
+\frac{\partial u_j}{\partial x_i}
+\right)+
+\frac{1}{2}
+\left(
+\frac{\partial u_i}{\partial x_j}-
+\frac{\partial u_j}{\partial x_i}
+\right)=\frac{1}{2}S_{ij}+A_{ij}
+$$
+
+其中：
+
+$$
+S_{ij}=
+\frac{1}{2}
+\left(
+\frac{\partial u_i}{\partial x_j}+
+\frac{\partial u_j}{\partial x_i}
+\right)
+$$
+
+为对称张量；
+
+$$
+A_{ij}
+=\frac{1}{2}
+\left(
+\frac{\partial u_i}{\partial x_j}-
+\frac{\partial u_j}{\partial x_i}
+\right)
+$$
+
+为反对称张量
+
+- 应变率张量$S_{ij}$：6 个独立分量分别是流体微团的线变形率和角变形率。
+- 旋转张量$A_{ij}$：3 个独立分量是流体微团的准刚体转动角速度。
+
+流体微团上任意点的运动=参考点的移动+变形运动+准刚体转动
+
+### 流体微团的应变率张量
+
+#### 线变形率
+
+$$
+\dot{\varepsilon}_x=\frac{\partial u}{\partial x}=S_{11}
+$$
+
+$$
+\dot{\varepsilon}_y=\frac{\partial v}{\partial y}=S_{22}
+$$
+
+$$
+\dot{\varepsilon}_z=\frac{\partial w}{\partial z}=S_{33}
+$$
+
+#### 角变形率
+
+$$
+\dot{\gamma}_{xy}=
+\frac{1}{2}
+\left(
+\frac{\partial u}{\partial y}+
+\frac{\partial v}{\partial x}
+\right)=
+S_{12}=
+S_{21}
+$$
+
+$$
+\dot{\gamma}_{yz}=
+\frac{1}{2}
+\left(
+\frac{\partial v}{\partial z}+
+\frac{\partial w}{\partial y}
+\right)=
+S_{23}=
+S_{32}
+$$
+
+$$
+\dot{\gamma}_{xz}=
+\frac{1}{2}
+\left(
+\frac{\partial w}{\partial x}+
+\frac{\partial u}{\partial z}
+\right)=
+S_{13}=
+S_{31}
+$$
+
+流体微团的线变形率与角变形率组成对称张量 $S_{ij}$ 的六个分量：
+
+$$
+\boldsymbol{S}=
+S_{ij}=
+\begin{bmatrix}
+\dot{\varepsilon}_x & \dot{\gamma}_{xy} & \dot{\gamma}_{xz} \\
+\dot{\gamma}_{yx} & \dot{\varepsilon}_y & \dot{\gamma}_{yz} \\
+\dot{\gamma}_{zx} & \dot{\gamma}_{zy} & \dot{\varepsilon}_z
+\end{bmatrix}
+$$
+
+#### 体积变化率
+
+单位时间内微团体积的相对增长率。
+
+$$
+\dot{\varepsilon}=
+\frac{\partial u}{\partial x}
++\frac{\partial v}{\partial y}
++\frac{\partial w}{\partial z}=
+\dot{\varepsilon}_x+\dot{\varepsilon}_y+\dot{\varepsilon}_z
+$$
+
+其中：
+
+$$
+\nabla\cdot\boldsymbol{v}
+$$
+
+是散度。
+
+微团的体积增长率 = 该点速度场的散度。
+
+不可压流体：体积不变（散度为零）。
+
+例：有直角坐标系下的速度场：
+
+$$
+\begin{cases}
+u=x^2y+y\\
+v=x^2-xy^2\\
+w=0
+\end{cases}
+$$
+
+求变形率张量的各分量，并判断是否为不可压流场。
+
+因此：
+
+$$
+\boldsymbol{S}=
+\begin{bmatrix}
+2xy & \dfrac{1}{2}(x^2+2x+1-y^2) & 0\\
+\dfrac{1}{2}(x^2+2x+1-y^2) & -2xy & 0\\
+0 & 0 & 0
+\end{bmatrix}
+$$
+
+$$
+\nabla\cdot\boldsymbol{u}=
+2xy-2xy+0=0
+$$
+
+所以：
+
+该流场为不可压流场。
+
+### 流体微团的准刚体转动角速度
+
+任意二阶反对称张量可与一个矢量对等：
+
+$$
+A_{ij}=
+\begin{bmatrix}
+0 & a_{12} & a_{13}\\
+-a_{12} & 0 & a_{23}\\
+-a_{13} & -a_{23} & 0
+\end{bmatrix}=
+\begin{bmatrix}
+0 & -\Omega_3 & \Omega_2\\
+\Omega_3 & 0 & -\Omega_1\\
+-\Omega_2 & \Omega_1 & 0
+\end{bmatrix}=
+-\varepsilon_{ijk}\Omega_k
+$$
+
+旋转张量：
+
+$$
+A_{ij}=\frac{1}{2}\left(\frac{\partial u_i}{\partial x_j}-\frac{\partial u_j}{\partial x_i}\right)
+$$
+
+速度场旋度：
+
+$$
+\boldsymbol{\omega}=\nabla\times\boldsymbol{v}
+$$
+
+其中：
+
+$$
+\omega_x=\frac{\partial w}{\partial y}-\frac{\partial v}{\partial z}
+$$
+
+$$
+\omega_y=\frac{\partial u}{\partial z}-\frac{\partial w}{\partial x}
+$$
+
+$$
+\omega_z=\frac{\partial v}{\partial x}-\frac{\partial u}{\partial y}
+$$
+
+角速度矢量 = 速度旋度之半：
+
+$$
+2A_{ij}=-\varepsilon_{ijk}\omega_k
+$$
 
 ## 作用于流体上的力
 
+### 体积力
+
+作用于体积 $\tau$ 内的每一个质点或微元，与体积或质量成正比（重力、惯性力）。
+
+体积元：
+
+$$
+\Delta m=\rho \Delta \tau
+$$
+
+单位体积/质量力：
+
+$$
+\boldsymbol{f}=\lim_{\Delta m\rightarrow0}\frac{\Delta \boldsymbol{F}}{\Delta m}
+=\lim_{\Delta \tau\rightarrow0}\frac{\Delta \boldsymbol{F}}{\rho\Delta\tau}
+$$
+
+$$
+[\boldsymbol{f}]=m/s^2
+$$
+
+作用于体积元 $d\tau$ 的力：
+
+$$
+d\boldsymbol{F}=\rho\boldsymbol{f}d\tau
+$$
+
+$$
+\boldsymbol{F}=\int_{\tau}\rho\boldsymbol{f}d\tau
+$$
+
+
+### 表面力和应力
+
+表面力：作用于流体微团表面的接触力（来自周围流体或其它物体）。
+
+应力：微元面积 $dS$ 上单位面积的表面力（表面力局部强度）。
+
+$M$ 点处应力矢量：
+
+$$
+\boldsymbol{P}_n=\lim_{\Delta S\rightarrow0}\frac{\Delta\boldsymbol{p}}{\Delta S}
+$$
+
+应力与作用方向有关，是法向的函数（约定向外为正）。
+
+正应力：应力矢量在作用面法向的分量。
+
+切应力：应力矢量在作用面切向的分量。
+
+作用面两侧的应力互为反作用力，故大小相等，方向相反：
+
+$$
+\boldsymbol{P}_n=-\boldsymbol{P}_{-n}
+$$
+
+### 应力张量及其性质
+
+![四面体的应力](assets/image-20261012151546348.png)
+
+面 $ABC$ 的法向单位矢量分解：
+$$
+\boldsymbol{n}=\cos(n,x)\boldsymbol{i}+\cos(n,y)\boldsymbol{j}+\cos(n,z)\boldsymbol{k}
+$$
+
+即：
+
+$$
+\boldsymbol{n}=n_x\boldsymbol{i}+n_y\boldsymbol{j}+n_z\boldsymbol{k}
+$$
+
+面积分解：
+
+$$
+\Delta S_x=\Delta S n_x
+$$
+
+$$
+\Delta S_y=\Delta S n_y
+$$
+
+$$
+\Delta S_z=\Delta S n_z
+$$
+
+体积：
+
+$$
+\Delta\tau=\frac{1}{3}\Delta S h
+$$
+
+随着四面体缩近 $M$ 点，表面力和体积力分别为 $2$ 阶和 $3$ 阶小量，后者可忽略。
+
+受力平衡（达朗贝尔原理）
+
+$$
+P_{-x}\Delta S_x+P_{-y}\Delta S_y+P_{-z}\Delta S_z+P_n\Delta S=0
+$$
+
+得到：
+
+$$
+P_n=n_xP_x+n_yP_y+n_zP_z
+$$
+
+
+表面力投影：
+
+$$
+P_{nx}=n_xP_{xx}+n_yP_{yx}+n_zP_{zx}
+$$
+
+$$
+P_{ny}=n_xP_{xy}+n_yP_{yy}+n_zP_{zy}
+$$
+
+$$
+P_{nz}=n_xP_{xz}+n_yP_{yz}+n_zP_{zz}
+$$
+
+任一点的应力状态可由 $9$ 个应力标量值确定，组成该点的应力张量（二阶对称张量）：
+
+$$
+P_{nj}=n_iP_{ij}
+$$
+
+$$
+P_{ij}=P_{ji}
+$$
+
+![应力张量各分量](assets/image-20261012151646824.png)
+
+### 静止和无粘流体的应力张量
+
+静止流体无切向力作用（否则将不停运动）：
+
+$$
+P_{ij}=0,\quad i\ne j
+$$
+
+结论：
+
+$$
+P_{xx}=P_{yy}=P_{zz}=P_{nn}
+$$
+
+定义压强：
+
+$$
+P_n=-P
+$$
+
+应力张量：
+
+$$
+\boldsymbol{P}=
+-P
+\begin{bmatrix}
+1&0&0\\
+0&1&0\\
+0&0&1
+\end{bmatrix}=-p\boldsymbol{I}
+$$
+
+或：
+
+$$
+P_{ij}=-P\delta_{ij}
+$$
+
+静止流体只受各向相同的正应力，即“压力”。
+
+运动的理想无粘流体切向力为零，上述结论同样成立。
+
 ## 本构方程
+
+广义牛顿应力公式：
+
+$$
+\boldsymbol{P}=2\mu\boldsymbol{S}+\left(-p+\lambda\nabla\cdot\boldsymbol{v}\right)\boldsymbol{I}
+$$
+
+其中：
+
+$$
+P_{ij}=-p\delta_{ij}+\mu\left(2S_{ij}-\frac{2}{3}\frac{\partial u_k}{\partial x_k}\delta_{ij}\right)
+$$
+
+粘性应力张量：
+
+$$
+\boldsymbol{\tau}=\mu\left(2\boldsymbol{S}-\frac{2}{3}\nabla\cdot\boldsymbol{v}\boldsymbol{I}\right)
+$$
+
+体膨胀系数：
+
+$$
+\lambda=-\frac{2}{3}\mu
+$$
