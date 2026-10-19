@@ -1569,3 +1569,903 @@ $$
 $$
 \lambda=-\frac{2}{3}\mu
 $$
+
+# 流体静力学
+
+## 平衡流体压强
+
+静止流体中只有法向（正）应力，无切向（剪）应力。上一节我们证明了面元上的应力为
+
+$$
+\boldsymbol{p}_n=-p\boldsymbol{n}
+$$
+
+这里引人负号，是因为静止流体中观测到的法向应力总是指向面积元内侧，即$-\boldsymbol{n}$方向。这里的$p$是一个标量，称为静力学压强，简称压强。单位为Pa，$1\text{Pa}=1\text{N/m}^2$
+
+## 流体平衡方程
+
+### 流体微元受力平衡分析
+
+![静止流体微元在x方向所受的压强合力（图里左侧的=应该是-）](assets/2-2.png)
+
+$x$方向受力：
+
+
+$$
+\left(p - \frac{\partial p}{\partial x} \frac{\mathrm{d}x}{2}\right)\mathrm{d}y\mathrm{d}z - \left(p + \frac{\partial p}{\partial x} \frac{\mathrm{d}x}{2}\right)\mathrm{d}y\mathrm{d}z = -\frac{\partial p}{\partial x}\mathrm{d}x\mathrm{d}y\mathrm{d}z
+$$
+
+$y$方向受力：
+
+$$
+-\frac{\partial p}{\partial y}\mathrm{d}x\mathrm{d}y\mathrm{d}z
+$$
+
+$z$方向受力：
+
+$$
+-\frac{\partial p}{\partial z}\mathrm{d}x\mathrm{d}y\mathrm{d}z
+$$
+
+由于压强分布不均匀所受的力为
+$$
+\left(-\frac{\partial p}{\partial x} \boldsymbol{i} - \frac{\partial p}{\partial y} \boldsymbol{j} - \frac{\partial p}{\partial z} \boldsymbol{k}\right)\mathrm{d}x\mathrm{d}y\mathrm{d}z = -\nabla p \mathrm{d}x\mathrm{d}y\mathrm{d}z
+$$
+
+由受力平衡
+
+$$
+\rho \boldsymbol{f} \mathrm{d}x\mathrm{d}y\mathrm{d}z - \nabla p \mathrm{d}x\mathrm{d}y\mathrm{d}z = 0
+$$
+
+$$
+\rho\boldsymbol{f}=\nabla p
+$$
+
+公式告诉我们：给定流场的体积力强度场与密度场，可确定压强分布。
+
+### 均质流体、正压与斜压流体
+
+- 均质：$\rho=\text{const}\Rightarrow\nabla\rho=0$
+- 正压：$\rho=\rho(p)\Rightarrow\nabla\rho=\dfrac{\mathrm d\rho}{\mathrm dp}\nabla p$
+- 斜压：$\rho=\rho(p,T,\ldots)$
+
+我们计算一下体积力场的旋度：
+
+$$
+\nabla\times\boldsymbol f=\nabla\times\left(\frac{\nabla p}{\rho}\right)=-\frac{\nabla\rho\times\nabla p}{\rho^2}
+$$
+
+对于均质和正压流体，旋度都为0，也就意味着体积力场有势
+
+$$
+\boldsymbol{f}=-\nabla\varphi
+$$
+
+对于斜压流体：
+$$
+\nabla\rho=
+\frac{\partial\rho}{\partial p}\nabla p+
+\frac{\partial\rho}{\partial T}\nabla T+\cdots
+$$
+
+$$
+\nabla\rho\times\nabla p\ne 0
+$$
+
+结论：均质和正压流体平衡则体积力有势，且等压、等密度、等势面重合。斜压流体体积力无势，无法在有势力作用下保持平衡。
+
+考虑两种不同密度流体（互不相融）的分界面：压强和体积力皆跨界面连续
+
+![](assets/image-20261019193633322.png)
+
+根据静力平衡方程：
+$$
+\nabla p=\rho\boldsymbol f
+$$
+沿位移方向，压强的微小变化为
+$$
+dp=\nabla p\cdot d\boldsymbol\ell =\rho\boldsymbol f\cdot d\boldsymbol\ell
+$$
+其中
+$$
+d\boldsymbol\ell=(dx,dy,dz)
+$$
+
+从两侧分别计算：
+$$
+\begin{aligned} dp&=\rho_1\boldsymbol f\cdot d\boldsymbol\ell\\ dp&=\rho_2\boldsymbol f\cdot d\boldsymbol\ell \end{aligned}
+$$
+由于这里讨论的是同一个分界面上的压强变化，两侧的切向压强变化相同。于是：
+$$
+(\rho_1-\rho_2) \boldsymbol f\cdot d\boldsymbol\ell=0
+$$
+又因为两种流体的密度不同，所以：
+$$
+\boldsymbol f\cdot d\boldsymbol\ell=0
+$$
+代回压强变化公式：
+$$
+dp=0
+$$
+结论：该分界面必是等压面；若体积力有势，则同为等密度、等势面。
+
+## 均质流体的静平衡
+
+### 重力场
+
+$$
+\boldsymbol{f} = -g\boldsymbol{k} \implies \nabla p = -\rho g\boldsymbol{k}
+$$
+
+压强场变化规律
+$$
+\frac{\partial p}{\partial x} = \frac{\partial p}{\partial y} = 0, \quad \frac{dp}{dz} = -\rho g
+$$
+
+$$
+p + \rho gz = p_0 + \rho gz_0 = \text{const}
+$$
+
+$$
+p = p_0 + \rho g(z_0 - z) = p_0 + \rho gh
+$$
+
+### U形管流体测压计
+
+![U形管流体测压计](assets/image-20261019194557084.png)
+
+$$
+P_M = P_A + \rho_{air} g d_1
+$$
+
+$$
+P_N = P_{atm} + \rho_{Hg} g d_2
+$$
+
+$$
+P_N = P_M
+$$
+
+$$
+P_A - P_{atm} = \rho_{Hg} g d_2 - \rho_{air} g d_1\approx \rho_{Hg} g d_2
+$$
+
+### 帕斯卡原理
+
+帕斯卡原理：对静止均质流体的某边界施加一个压强，则这一压强将均匀传遍整个流体。
+
+![帕斯卡原理示意图](assets/image-20261019195025483.png)
+$$
+\Delta P = \frac{\Delta F_B}{S_B} = \frac{\Delta F_C}{S_C}
+$$
+
+$$
+\frac{\Delta F_B}{\Delta F_C} = \frac{S_B}{S_C}
+$$
+
+## 非惯性系中均质流体的相对平衡
+
+### 受力平衡（达朗贝尔原理）
+$$
+\rho\boldsymbol{a}=-\nabla p+\rho\boldsymbol{f}
+\Rightarrow \nabla p=\rho(\boldsymbol{f}-\boldsymbol{a})
+$$
+
+### 匀加速直线运动
+
+![匀加速直线运动容器中的流体](assets/image-20261019195659769.png)
+
+取 $z$ 轴竖直向上，$xz$ 平面平行于容器（和流体）的匀加速度 $\boldsymbol{a}$
+
+$$
+\nabla p=\rho(\boldsymbol{g}-\boldsymbol{a})=-\rho a_x\boldsymbol{i}-\rho(g+a_z)\boldsymbol{k}
+$$
+
+$$
+\begin{cases}
+\displaystyle\frac{\partial p}{\partial x}=-\rho a_x\\[6pt]
+\displaystyle\frac{\partial p}{\partial y}=0\\[6pt]
+\displaystyle\frac{\partial p}{\partial z}=-\rho(g+a_z)
+\end{cases}
+$$
+
+积分得到流体压强分布：
+
+$$
+p=-\rho a_x x-\rho(g+a_z)z+C
+$$
+
+自由面：
+
+$$
+p_{\mathrm{atm}}=-\rho a_xx-\rho(g+a_z)z+C
+$$
+
+$$
+z=-\frac{a_x}{g+a_z}x+C'
+$$
+
+自由界面为等压面。
+
+### 匀角速度旋转
+
+![旋转圆筒中流体的自由面形状](assets/image-20261019201558556.png)
+
+离心力：
+
+$$
+\boldsymbol{f}_c = \Omega^2 r \boldsymbol{e}_r
+$$
+
+受力平衡：
+
+$$
+\nabla p = \rho \left( -g\boldsymbol{e}_z + \Omega^2 r \boldsymbol{e}_r \right)
+$$
+
+流体压强分布：
+
+$$
+p = -\rho gz + \frac{1}{2}\rho\Omega^2r^2 + C
+$$
+
+自由面上代入$r=0, z=h_{\min},p = p_{\mathrm{atm}}$，得$C=p_{\mathrm{atm}}+\rho gh_{\min}$，于是
+
+$$
+z = h_{\min} + \frac{\Omega^2r^2}{2g}
+$$
+
+角速度：当 $r = a$ 时，$z = h_{\max}$，因此
+
+$$
+\Omega = \frac{\sqrt{2g(h_{\max}-h_{\min})}}{a}
+$$
+
+## 均质流体作用在平壁的压强合力
+
+### 等宽垂直平板
+
+![](assets/image-20261019204156175.png)
+
+
+高度 $z$ 处内侧压强：
+$$
+p = p_a + \rho g(h-z)
+$$
+
+内侧压力：
+$$
+\mathrm{d}F_{\mathrm{in}} = [p_a + \rho g(h-z)]w\,\mathrm{d}z
+$$
+
+外侧压力：
+$$
+\mathrm{d}F_{\mathrm{out}} = -p_a w\,\mathrm{d}z
+$$
+
+净作用力：
+$$
+\mathrm{d}F = \rho g(h-z)w\,\mathrm{d}z
+$$
+
+总合力：
+$$
+F = \int_0^h \mathrm{d}F = \frac{1}{2}\rho gwh^2
+$$
+
+合力矩：
+$$
+M = Fz_0
+$$
+
+微元力矩：
+$$
+\mathrm{d}M = \mathrm{d}F \cdot z = \rho g(h-z)wz\,\mathrm{d}z
+$$
+
+总力矩：
+$$
+M = \frac{1}{6}\rho gwh^3
+$$
+
+合力作用点位置：
+$$
+z_0 = \frac{h}{3}
+$$
+
+
+结论： 类似线性变化分布力作用在悬臂梁上，$z=\dfrac{h}{3}$。
+### 等宽倾斜平板
+
+![](assets/image-20261019204905113.png)
+
+高度 $z$ 处表压：
+
+$$
+p_g=\rho g(h-z)
+$$
+
+微元面上压力：
+
+$$
+dF=p_gw\,ds
+$$
+
+$$
+dz=ds\sin\theta, dx=ds\cos\theta
+$$
+
+水平方向受力：
+
+$$
+F_x=\int dF\sin\theta=\int_0^h \rho g(h-z)w\,dz=\frac{1}{2}\rho gwh^2
+$$
+
+垂直方向受力：
+
+$$
+F_z=\int dF\cos\theta=\int_0^{h/\tan\theta}\rho g(h-x\tan\theta)w\,dx=\frac{\rho gwh^2}{2\tan\theta}
+$$
+
+同理（取$\mathrm dM$再积分）可得合力作用的位置：
+
+$$
+s_0=\frac{h}{3\sin\theta}
+$$
+### 任意形状平板
+
+![求平壁在静止流体中受力的示意图](assets/image-20261019205529696.png)
+
+y 处表压：
+
+$$
+p_g = \rho g y \sin\theta
+$$
+
+微元面上压力积分：
+
+$$
+F = \int_S p_g\,dS
+$$
+
+平板形心：
+
+$$
+y_c = \frac{1}{S}\int_S y\,dS
+$$
+
+合力为：
+
+$$
+F = \rho g y_c\sin \theta S=\rho g h_c S = p_c S
+$$
+
+若板上压力分布均匀，则合力过形心，否则合力不通过形心。
+
+合力作用点：
+
+$$
+M_\xi = F(y'-y_c) = \int_S p_g\eta\,dS = \rho g\sin\theta\int_S y\eta\,dS
+$$
+
+其中：
+
+$$
+y = y_c + \eta
+$$
+
+因此：
+
+$$
+F(y'-y_c) = \rho g\sin\theta\left(\int_S \eta^2\,dS + y_c\int_S \eta\,dS\right)
+$$
+
+又因为：
+
+$$
+\int_S \eta\,dS = 0
+$$
+
+定义面积惯性矩：
+
+$$
+I_{\xi\xi} = \int_S \eta^2\,dS
+$$
+
+$$
+I_{\xi\eta} = \int_S \xi\eta\,dS
+$$
+
+所以合力作用点坐标为：
+
+$$
+y' = y_c + \frac{I_{\xi\xi}}{y_c S}
+$$
+
+$$
+x' = x_c + \frac{I_{\xi\eta}}{y_c S}
+$$
+
+## 均质流体作用在曲壁的压强合力
+
+![求曲壁在静止流体中受力水平分量的示意图](assets/image-20261019212024064.png)
+
+微元面上压力：
+
+$$
+\mathrm{d}\boldsymbol{F}=-p\boldsymbol{n}\,\mathrm{d}A
+$$
+
+合力水平分量：
+
+$$
+F_x=-\int_A p n_x\,\mathrm{d}A=\int_A -p\,\mathrm{d}S_x
+$$
+
+曲壁面合力水平分量为水平方向投影的垂直平面上所受合力。
+
+![求曲壁在静止流体中受力竖直分量的示意图](assets/image-20261019212038251.png)
+
+垂直分量：
+$$
+\mathrm{d}F_z=-p\,\mathrm{d}S_z=-\rho g(z_0-z)\,\mathrm{d}S_z
+$$
+
+$$
+F_z=\int_{V_s}-\rho g\,\mathrm{d}V_s=-\rho gV_s
+$$
+
+作用线：
+
+$$
+x'=\frac{\displaystyle\int_{V_s}x\,\mathrm{d}V_s}{V_s}=x_c,\qquad y'=y_c,\qquad z'=z_c
+$$
+
+合力垂直分量作用线过曲面上方压力体的体心。
+
+例题1：二次曲面受力分析
+
+![](assets/image-20261019213508687.png)
+1. 已知条件
+
+曲壁方程为：
+
+$$
+z=\frac{h}{a^2}x^2
+$$
+
+其中：
+- $h$：液面高度
+- $a$：曲壁的水平跨度
+- $w$：曲壁沿垂直纸面方向的宽度
+- $\rho$：流体密度
+- $g$：重力加速度
+
+液面处压强为大气压 $p_a$，曲壁另一侧也受大气压，因此采用表压计算：
+
+$$
+p=\rho g(h-z)
+$$
+
+目标：求曲壁所受压强合力的大小、方向及作用线位置。
+
+2. 水平分力 $F_H$
+
+曲壁所受压力的水平分量，等于曲壁在竖直平面上的投影所受的静水压力合力。
+
+竖直投影面积为宽度 $w$、高度 $h$ 的矩形。
+
+高度 $z$ 处的表压：
+
+$$
+p=\rho g(h-z)
+$$
+
+投影面积微元：
+
+$$
+\mathrm{d}A_H=w\,\mathrm{d}z
+$$
+
+因此，水平分力为：
+
+$$
+\begin{aligned}
+F_H
+&=\int_0^h p\,\mathrm{d}A_H\\
+&=\int_0^h \rho g(h-z)w\,\mathrm{d}z\\
+&=\rho gw\left[hz-\frac{z^2}{2}\right]_0^h\\
+&=\frac{1}{2}\rho gwh^2
+\end{aligned}
+$$
+
+即：
+
+$$
+\boxed{F_H=\frac{1}{2}\rho gwh^2}
+$$
+
+水平分力的作用位置
+
+水平分力的作用线通过竖直投影面上压力分布图的形心。
+
+以底部为 $z=0$，则：
+
+$$
+\begin{aligned}
+\bar z
+&=\frac{\displaystyle\int_0^h z p w\,\mathrm{d}z}{F_H}\\
+&=\frac{\rho gw\displaystyle\int_0^h z(h-z)\,\mathrm{d}z}
+{\dfrac{1}{2}\rho gwh^2}\\
+&=\frac{\rho gw\left[\dfrac{hz^2}{2}-\dfrac{z^3}{3}\right]_0^h}
+{\dfrac{1}{2}\rho gwh^2}\\
+&=\frac{h}{3}
+\end{aligned}
+$$
+
+因此：
+
+$$
+\boxed{\bar z=\frac{h}{3}}
+$$
+
+3. 竖直分力 $F_V$
+
+曲壁所受压力的竖直分量，方向向下。
+
+曲壁微元的面积为 $\mathrm{d}A=w\,\mathrm{d}s$。由曲线几何关系：
+
+$$
+\mathrm{d}x=\mathrm{d}s\cos\theta
+$$
+
+其中 $\theta$ 为曲面切线与水平线的夹角。因此，压力微元的竖直分量大小为：
+
+$$
+\mathrm{d}F_V=pw\,\mathrm{d}s\cos\theta
+=pw\,\mathrm{d}x
+$$
+
+代入曲壁方程：
+
+$$
+z=\frac{hx^2}{a^2}
+$$
+
+得到高度 $z$ 处的表压：
+
+$$
+p=\rho g(h-z)
+=\rho gh\left(1-\frac{x^2}{a^2}\right)
+$$
+
+于是：
+
+$$
+\begin{aligned}
+F_V
+&=\int_0^a p w\,\mathrm{d}x\\
+&=\rho gwh\int_0^a
+\left(1-\frac{x^2}{a^2}\right)\mathrm{d}x\\
+&=\rho gwh\left[x-\frac{x^3}{3a^2}\right]_0^a\\
+&=\rho gwh\left(a-\frac{a}{3}\right)\\
+&=\frac{2}{3}\rho gwah
+\end{aligned}
+$$
+
+因此：
+
+$$
+\boxed{F_V=\frac{2}{3}\rho gwah}
+$$
+
+方向向下。
+
+竖直分力的物理意义
+
+竖直分力的大小等于曲壁上方、自由液面下方的假想液体重量。
+
+假想液体的体积为：
+
+$$
+\begin{aligned}
+V
+&=w\int_0^a(h-z)\,\mathrm{d}x\\
+&=wh\int_0^a
+\left(1-\frac{x^2}{a^2}\right)\mathrm{d}x\\
+&=\frac{2}{3}wah
+\end{aligned}
+$$
+
+其重量为：
+
+$$
+G=\rho gV=\frac{2}{3}\rho gwah
+$$
+
+因此：
+
+$$
+\boxed{F_V=G=\frac{2}{3}\rho gwah}
+$$
+
+竖直分力的作用位置
+
+竖直分力的作用线通过假想液体的形心。由于流体密度均匀，形心的水平坐标为：
+
+$$
+\begin{aligned}
+\bar x
+&=\frac{\displaystyle\int_0^a x(h-z)\,\mathrm{d}x}
+{\displaystyle\int_0^a(h-z)\,\mathrm{d}x}\\
+&=\frac{\displaystyle\int_0^a x\left(1-\frac{x^2}{a^2}\right)\mathrm{d}x}
+{\displaystyle\int_0^a\left(1-\frac{x^2}{a^2}\right)\mathrm{d}x}\\
+&=\frac{\left[\displaystyle\frac{x^2}{2}-\frac{x^4}{4a^2}\right]_0^a}
+{\left[\displaystyle x-\frac{x^3}{3a^2}\right]_0^a}\\
+&=\frac{a^2/4}{2a/3}\\
+&=\frac{3a}{8}
+\end{aligned}
+$$
+
+因此：
+
+$$
+\boxed{\bar x=\frac{3a}{8}}
+$$
+
+4. 压强合力 $F$
+
+水平分力与竖直分力相互垂直，因此合力大小为：
+
+$$
+F=\sqrt{F_H^2+F_V^2}
+$$
+
+代入：
+
+$$
+F=\sqrt{
+\left(\frac{1}{2}\rho gwh^2\right)^2+
+\left(\frac{2}{3}\rho gwah\right)^2
+}
+$$
+
+提取公因子：
+
+$$
+\begin{aligned}
+F
+&=\frac{1}{2}\rho gwh^2
+\sqrt{1+\frac{16a^2}{9h^2}}
+\end{aligned}
+$$
+
+最终结果：
+
+$$
+\boxed{
+F=\frac{1}{2}\rho gwh^2
+\sqrt{1+\frac{16a^2}{9h^2}}
+}
+$$
+
+合力的方向
+
+设合力与水平方向的夹角为 $\theta$，则：
+
+$$
+\tan\theta=\frac{F_V}{F_H}
+$$
+
+代入水平、竖直分力：
+
+$$
+\begin{aligned}
+\tan\theta
+&=\frac{\dfrac{2}{3}\rho gwah}
+{\dfrac{1}{2}\rho gwh^2}\\
+&=\frac{4a}{3h}
+\end{aligned}
+$$
+
+因此：
+
+$$
+\boxed{\theta=\arctan\frac{4a}{3h}}
+$$
+
+合力方向为向右下方。
+
+5. 合力作用线的位置
+
+水平分力的作用线为：
+
+$$
+z=\frac{h}{3}
+$$
+
+竖直分力的作用线为：
+
+$$
+x=\frac{3a}{8}
+$$
+
+两条作用线的交点为：
+
+$$
+\boxed{
+(\bar x,\bar z)=
+\left(\frac{3a}{8},\frac{h}{3}\right)
+}
+$$
+
+合力作用线通过该交点，其斜率为：
+
+$$
+\frac{\mathrm{d}z}{\mathrm{d}x}
+=-\frac{F_V}{F_H}
+=-\frac{4a}{3h}
+$$
+
+因此，合力作用线方程为：
+
+$$
+\boxed{
+z-\frac{h}{3}
+=-\frac{4a}{3h}
+\left(x-\frac{3a}{8}\right)
+}
+$$
+
+注意：该交点是合力作用线上的一点，不一定是曲壁表面上的实际受力点。
+
+6. 最终结果汇总
+
+$$
+\boxed{F_H=\frac{1}{2}\rho gwh^2}
+$$
+
+$$
+\boxed{F_V=\frac{2}{3}\rho gwah}
+\qquad \text{（方向向下）}
+$$
+
+$$
+\boxed{
+F=\frac{1}{2}\rho gwh^2
+\sqrt{1+\frac{16a^2}{9h^2}}
+}
+$$
+
+$$
+\boxed{\theta=\arctan\frac{4a}{3h}}
+$$
+
+$$
+\boxed{\bar z=\frac{h}{3},\qquad \bar x=\frac{3a}{8}}
+$$
+例题2：求竖板稳定时两侧液面高度之比
+
+![](assets/image-20261019214157954.png)
+
+1. 分析受力
+
+设竖板左侧液体的密度为 $\rho_1$，液面高度为 $h_1$；
+右侧液体的密度为 $\rho_2$，液面高度为 $h_2$。
+
+竖板底部为铰链，两侧液体均与大气相通。
+取竖板底部铰链处为转动中心。
+
+2. 计算左侧液体的压力合力
+
+以竖板底部为坐标原点，竖直向上为 $z$ 轴。
+
+左侧液体在高度 $z$ 处的表压为
+
+$$
+p_1(z)=\rho_1 g(h_1-z)
+$$
+
+设竖板的宽度为 $b$，则微元面积上的压力为
+
+$$
+\mathrm{d}F_1=p_1(z)b\,\mathrm{d}z
+$$
+
+左侧液体对竖板的压力合力大小为
+
+$$
+F_1=\int_0^{h_1}\rho_1g(h_1-z)b\,\mathrm{d}z
+=\frac{1}{2}\rho_1gbh_1^2
+$$
+
+三角形压力分布的合力作用点位于液面下方 $h_1/3$ 处，
+即距底部铰链 $h_1/3$。
+
+因此，左侧压力对铰链的力矩大小为
+
+$$
+M_1=F_1\frac{h_1}{3}
+=\frac{1}{6}\rho_1gbh_1^3
+$$
+
+3. 计算右侧液体的压力合力
+
+同理，右侧液体在高度 $z$ 处的表压为
+
+$$
+p_2(z)=\rho_2g(h_2-z)
+$$
+
+右侧压力合力为
+
+$$
+F_2=\int_0^{h_2}\rho_2g(h_2-z)b\,\mathrm{d}z
+=\frac{1}{2}\rho_2gbh_2^2
+$$
+
+合力作用点距底部铰链 $h_2/3$，因此右侧压力对铰链的力矩大小为
+
+$$
+M_2=F_2\frac{h_2}{3}
+=\frac{1}{6}\rho_2gbh_2^3
+$$
+
+4. 利用稳定条件求解
+
+竖板稳定时，两侧压力对铰链产生的力矩大小相等、方向相反：
+
+$$
+M_1=M_2
+$$
+
+代入上式：
+
+$$
+\frac{1}{6}\rho_1gbh_1^3=
+\frac{1}{6}\rho_2gbh_2^3
+$$
+
+约去公共因子 $\frac{1}{6}gb$，得
+
+$$
+\rho_1h_1^3=\rho_2h_2^3
+$$
+
+整理可得两侧液面高度之比：
+
+$$
+\boxed{\frac{h_1}{h_2}
+=\sqrt[3]{\frac{\rho_2}{\rho_1}}}
+$$
+
+5. 结论
+
+两侧液面高度之比等于对侧液体密度与本侧液体密度之比的立方根。
+
+液体密度越大，在相同液面高度下产生的压力力矩越大。
+因此，稳定时密度较大一侧的液面通常较低。
+
+## 浮力与稳定性
+
+### 阿基米德浮力定律
+
+浸没在均质液体中的物体所受浮力 = 排开液体的重量
+
+![](assets/image-20261019213222082.png)
+
+水平方向压力投影大小相等、方向相反，故相互抵消。
+
+竖直方向合力等于上下表面对应压力体的重量差。
+
+浮力作用线通过排开体积（压力体之差）的几何中心。
+
+### 潜体与浮体的平衡条件
+
+| 类型 | 稳定平衡 | 不稳定平衡 | 随遇平衡 |
+| :-: | :-: | :-: | :-: |
+| 潜体 | 浮心 $B$ 在重心 $G$ 上方| 浮心 $B$ 在重心 $G$ 下方| $B$ 与 $G$ 重合|
+| 浮体 | 稳心 $M$ 在重心 $G$ 上方| 稳心 $M$ 在重心 $G$ 下方| $M$ 与 $G$ 重合|
+
+![](assets/image-20261019220102087.png)
